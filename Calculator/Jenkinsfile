@@ -1,5 +1,5 @@
 pipeline {
-    agent Test
+    agent {'Test'}
     environment {
         // Set your environment variables here
         DEPLOY_PATH = '/path/to/tomcat/webapps/' // Adjust this to your Tomcat's webapps directory
