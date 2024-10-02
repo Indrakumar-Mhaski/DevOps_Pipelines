@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    environment {
+        // Set your environment variables here
+        DEPLOY_PATH = '/path/to/tomcat/webapps/' // Adjust this to your Tomcat's webapps directory
+        CATALINA_HOME = '/path/to/tomcat' // Adjust this to your Tomcat home directory
+        TOMCAT_USER = 'admin' // Your Tomcat user if authentication is needed
+        TOMCAT_PASSWORD = 'admin' // Your Tomcat password if authentication is needed
+        WAR_FILE = 'target/CalculatorApp-1.0-SNAPSHOT.war' // Adjust this to match your WAR file name
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Pull the code from GitHub repository
+                git branch: 'main', url: 'https://github.com/yourusername/your-repo.git'
+            }
+        }
+        
+    //     stage('Build') {
+    //         steps {
+    //             // Build the project using Maven
+    //             sh 'mvn clean package'
+    //         }
+    //     }
+        
+    //     stage('Deploy to Tomcat') {
+    //         steps {
+    //             // Deploy the WAR file to Tomcat webapps directory
+    //             script {
+    //                 // Ensure Tomcat is stopped before deploying
+    //                 sh "$CATALINA_HOME/bin/shutdown.sh || true"
+                    
+    //                 // Copy WAR file to Tomcat webapps
+    //                 sh "cp $WAR_FILE $DEPLOY_PATH"
+                    
+    //                 // Start Tomcat again
+    //                 sh "$CATALINA_HOME/bin/startup.sh"
+    //             }
+    //         }
+    //     }
+    // }
+    
+    post {
+        success {
+            echo 'Application deployed successfully!'
+        }
+        failure {
+            echo 'Build or deployment failed.'
+        }
+    }
+}
