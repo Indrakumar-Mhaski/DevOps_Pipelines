@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Pull the code from GitHub repository
-                git branch: 'main', url: 'https://github.com/yourusername/your-repo.git'
+                git branch: 'main', url: 'https://github.com/Indrakumar-Mhaski/JavaCalculatorApp.git'
             }
         }
         
@@ -39,7 +39,7 @@ pipeline {
     //             }
     //         }
     //     }
-    // }
+    }
     
     post {
         success {
