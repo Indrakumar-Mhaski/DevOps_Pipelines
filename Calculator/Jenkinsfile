@@ -11,7 +11,7 @@ pipeline {
 
         EC2_IP = '13.211.204.94'
         SSH_USER = 'ubuntu'
-        TOMCAT_WEBAPPS_DIR = '/var/lib/tomcat9/webapps/' // Adjust according to Tomcat installation
+        TOMCAT_WEBAPPS_DIR = '/opt/tomcat9/webapps/' // Adjust according to Tomcat installation
         SSH_KEY_PATH = '~/.ssh/id_rsa' // Jenkins server or agent's private key
         
     }
