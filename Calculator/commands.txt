@@ -1,0 +1,26 @@
+Start Tomcat Server:
+
+E:\>cd apache-tomcat-9.0.95/bin
+
+E:\apache-tomcat-9.0.95\bin>startup.bat
+
+
+To build the application:
+
+mvn clean package
+
+
+
+Start Jenkins Container:
+
+docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk17
+
+
+To start the Jenkins Agent:
+
+docker run -i --rm --network host --name agent1 --init -v agent1-workdir:/home/jenkins/agent jenkins/agent java -jar /usr/share/jenkins/agent.jar -workDir /home/jenkins/agent
+
+docker exec -it -u root agent1 /bin/bash
+
+curl -sO http://localhost:8080/jnlpJars/agent.jar;java -jar agent.jar -url http://localhost:8080/ -secret f0fc2361db1e9da9f5f33de85be1aa02ee78ba21103208d17bdd049e9278bead -name Test -workDir "/var/jenkins"
+
