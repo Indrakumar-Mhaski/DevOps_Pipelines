@@ -22,5 +22,37 @@ docker run -i --rm --network host --name agent1 --init -v agent1-workdir:/home/j
 
 docker exec -it -u root agent1 /bin/bash
 
+apt-get update
+
+apt install maven
+
 curl -sO http://localhost:8080/jnlpJars/agent.jar;java -jar agent.jar -url http://localhost:8080/ -secret f0fc2361db1e9da9f5f33de85be1aa02ee78ba21103208d17bdd049e9278bead -name Test -workDir "/var/jenkins"
+
+
+
+EC2Login:
+ssh -i Legion.pem ubuntu@13.211.204.94
+sudo su -
+cd /opt
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.95/bin/apache-tomcat-9.0.95.tar.gz
+sudo tar xzvf apache-tomcat-9.0.95.tar.gz
+sudo mv apache-tomcat-9.0.95 tomcat9
+cd /opt/tomcat9/bin
+sudo ./startup.sh
+
+sudo apt update
+sudo apt install openjdk-21-jdk -y
+sudo nano /etc/profile
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+source /etc/profile
+
+
+
+At Jenkins Server:
+ssh-keygen -t rsa -b 4096 -C "jenkins@ec2"
+ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@your-ec2-public-ip
+cat ~/.ssh/id_rsa.pub
+
+ssh -i /path/to/your-key.pem ec2-user@<your-ec2-public-ip>
 

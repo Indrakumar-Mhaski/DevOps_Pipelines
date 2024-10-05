@@ -25,21 +25,21 @@ pipeline {
             }
         }
         
-    //     stage('Deploy to Tomcat') {
-    //         steps {
-    //             // Deploy the WAR file to Tomcat webapps directory
-    //             script {
-    //                 // Ensure Tomcat is stopped before deploying
-    //                 sh "$CATALINA_HOME/bin/shutdown.sh || true"
+        stage('Deploy to Tomcat') {
+            steps {
+                // Deploy the WAR file to Tomcat webapps directory
+                script {
+                    // Ensure Tomcat is stopped before deploying
+                    // sh "$CATALINA_HOME/bin/shutdown.sh || true"
                     
-    //                 // Copy WAR file to Tomcat webapps
-    //                 sh "cp $WAR_FILE $DEPLOY_PATH"
+                    // Copy WAR file to Tomcat webapps
+                    sh "cp $WAR_FILE $DEPLOY_PATH"
                     
-    //                 // Start Tomcat again
-    //                 sh "$CATALINA_HOME/bin/startup.sh"
-    //             }
-    //         }
-    //     }
+                    // Start Tomcat again
+                    // sh "$CATALINA_HOME/bin/startup.sh"
+                }
+            }
+        }
     }
     
     post {
