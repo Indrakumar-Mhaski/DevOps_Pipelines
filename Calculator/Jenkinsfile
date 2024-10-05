@@ -37,9 +37,10 @@ pipeline {
                 script {
                     
                     // Copy WAR file to Tomcat webapps
+                    sh """
                     scp -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${WAR_FILE} ${SSH_USER}@${EC2_IP}:${TOMCAT_WEBAPPS_DIR}
-                    
-                    
+                    """
+
                     // SSH into EC2 and restart Tomcat to deploy the new WAR
                     sh """
                     ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${EC2_IP} 'sudo systemctl restart tomcat'
