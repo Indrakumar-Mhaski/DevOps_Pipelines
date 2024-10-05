@@ -43,7 +43,9 @@ pipeline {
 
                     // SSH into EC2 and restart Tomcat to deploy the new WAR
                     sh """
-                    ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${EC2_IP} 'sudo systemctl restart tomcat'
+                    ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${EC2_IP} '/opt/tomcat9/webapps/bin/shutdown.sh'
+                    ssh -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${SSH_USER}@${EC2_IP} '/opt/tomcat9/webapps/bin/startup.sh'
+
                     """
                 }
             }
