@@ -39,6 +39,7 @@ sudo tar xzvf apache-tomcat-9.0.95.tar.gz
 sudo mv apache-tomcat-9.0.95 tomcat9
 cd /opt/tomcat9/bin
 sudo ./startup.sh
+sudo chmod -R 777 /opt/tomcat9/webapps
 
 sudo apt update
 sudo apt install openjdk-21-jdk -y
@@ -55,4 +56,5 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@your-ec2-public-ip
 cat ~/.ssh/id_rsa.pub
 
 ssh -i /path/to/your-key.pem ec2-user@<your-ec2-public-ip>
+
 

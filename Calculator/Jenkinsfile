@@ -3,10 +3,8 @@ pipeline {
     // agent any
     environment {
         // Set your environment variables here
-        DEPLOY_PATH = '/path/to/tomcat/webapps/' // Adjust this to your Tomcat's webapps directory
-        CATALINA_HOME = '/path/to/tomcat' // Adjust this to your Tomcat home directory
-        TOMCAT_USER = 'admin' // Your Tomcat user if authentication is needed
-        TOMCAT_PASSWORD = 'admin' // Your Tomcat password if authentication is needed
+
+
         WAR_FILE = 'target/CalculatorApp-1.0-SNAPSHOT.war' // Adjust this to match your WAR file name
 
         EC2_IP = '13.211.204.94'
@@ -40,7 +38,7 @@ pipeline {
                     sh """
                     scp -i ${SSH_KEY_PATH} -o StrictHostKeyChecking=no ${WAR_FILE} ${SSH_USER}@${EC2_IP}:${TOMCAT_WEBAPPS_DIR}
                     """
-                    
+
                 }
             }
         }
