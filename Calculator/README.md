@@ -21,6 +21,8 @@ I’ve set up a complete CI/CD pipeline using **Docker** and **Jenkins**, enabli
 
 This setup simplifies the development workflow while enhancing team efficiency.
 
+![Diagram Alt Text](DevOps.png)
+
 ---
 
 ### Technologies Used
