@@ -9,7 +9,7 @@ I’ve set up a complete CI/CD pipeline using **Docker** and **Jenkins**, enabli
   - Two **Linux-based Jenkins build agents** with **Maven** installed, enabling Java builds.
 
 ## GitHub Repositories
-- The [**application code**](https://github.com/Indrakumar-Mhaski/JavaCalculatorApp) and the **pipeline code** are hosted separately on GitHub to maintain clean version control and modularity.
+- The [**application code**](https://github.com/Indrakumar-Mhaski/JavaCalculatorApp) and the [**pipeline code**](https://github.com/Indrakumar-Mhaski/DevOps_Pipelines/tree/main/Calculator) are hosted separately on GitHub to maintain clean version control and modularity.
 
 ## Build and Deployment Process
 - The Jenkins master fetches both the application and pipeline code.
